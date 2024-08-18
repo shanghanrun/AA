@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -51,8 +52,16 @@ public class GameManager : MonoBehaviour
             isGameOver = true;
 
             Camera.main.backgroundColor = success ? green : red;
-            btnRetry.SetActive(true);
+            Invoke("ShowRetryButton", 1f);
         }
+    }
+
+    void ShowRetryButton(){
+        btnRetry.SetActive(true);
+    }
+
+    public void Retry(){
+        SceneManager.LoadScene("SampleScene");
     }
 
 
